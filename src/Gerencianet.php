@@ -9,20 +9,13 @@ use Illuminate\Support\Collection;
 class Gerencianet extends Container {
 
     /**
-     * The client options.
-     *
-     * @var Collection
-     */
-    protected Collection $options;
-
-    /**
      * Gerencianet constructor.
      *
      * @param array $options
      */
     public function __construct(array $options) {
         $this->singleton('default', function() use($options) {
-            $options = collect($this->options)
+            $options = collect($options)
                 ->except('pix_cert')
                 ->toArray();
 
@@ -40,7 +33,7 @@ class Gerencianet extends Container {
      * @return Client
      */
     public function default(): Client {
-        $this->make('default');
+        return $this->make('default');
     }
 
     /**
@@ -49,7 +42,7 @@ class Gerencianet extends Container {
      * @return Client
      */
     public function pix(): Client {
-        $this->make('pix');
+        return $this->make('pix');
     }
 
 }

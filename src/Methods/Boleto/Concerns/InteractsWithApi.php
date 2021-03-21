@@ -43,7 +43,7 @@ trait InteractsWithApi {
         $webhook_url = config('graham-gerencianet.webhook_url') ??
             route('graham-gerencianet.webhook');
 
-        $data = $this->getApi()->oneStep([
+        $data = $this->getApi()->oneStep([], [
             'metadata' => [
                 'notification_url' => $webhook_url
             ],
