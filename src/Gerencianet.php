@@ -4,7 +4,6 @@ namespace Unitable\GrahamGerencianet;
 
 use Gerencianet\Gerencianet as Client;
 use Illuminate\Container\Container;
-use Illuminate\Support\Collection;
 
 class Gerencianet extends Container {
 
