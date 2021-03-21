@@ -29,7 +29,7 @@ trait InteractsWithApi {
     public function newBoleto(SubscriptionInvoice $invoice): Boleto {
         $charge = $this->getApi()->newCharge($invoice);
 
-        $data = $this->payCharge([
+        $data = $this->getApi()->payCharge([
             'id' => $charge->id
         ], [
             'payment' => [
