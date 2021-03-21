@@ -1,6 +1,6 @@
 <?php
 
-namespace Unitable\GrahamGerencianet\Methods\Boleto;
+namespace Unitable\GrahamGerencianet\Methods\Pix;
 
 use Illuminate\Support\Facades\Event;
 use Illuminate\Support\ServiceProvider;

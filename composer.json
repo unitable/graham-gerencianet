@@ -49,7 +49,8 @@
         "laravel": {
             "providers": [
                 "Unitable\\GrahamGerencianet\\GrahamGerencianetServiceProvider",
-                "Unitable\\GrahamGerencianet\\Methods\\Boleto\\BoletoMethodServiceProvider"
+                "Unitable\\GrahamGerencianet\\Methods\\Boleto\\BoletoMethodServiceProvider",
+                "Unitable\\GrahamGerencianet\\Methods\\Pix\\PixMethodServiceProvider"
             ],
             "aliases": {
                 "GrahamGerencianet": "Unitable\\GrahamGerencianet\\GrahamGerencianetFacade"
