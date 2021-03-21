@@ -27,18 +27,25 @@ trait InteractsWithApi {
      * @noinspection PhpDocRedundantThrowsInspection
      */
     public function newPix(SubscriptionInvoice $invoice): Pix {
+        $item_name = str_replace([
+            '%plan_name%', '%plan_price_name%'
+        ], [
+            $invoice->plan->name, $invoice->plan_price->name
+        ], config('graham-gerencianet.invoice_item_name'));
+
         $expires_after = $invoice->due_at
             ->addDay()
             ->diffInSeconds(now());
 
         $pix = $this->getApi()->pixCreateImmediateCharge([], [
-            "calendario" => [
-                "expiracao" => $expires_after
-            ],
+            "chave" => config('graham-gerencianet.pix_key'),
             "valor" => [
                 "original" => number_format($invoice->total, 2, '.', '')
             ],
-            "chave" => config('graham-gerencianet.pix_key'),
+            "calendario" => [
+                "expiracao" => $expires_after
+            ],
+            "solicitacaoPagador" => $item_name
         ]);
 
         if (!isset($pix['txid']) || !$pix['txid']) {
