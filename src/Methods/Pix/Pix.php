@@ -13,13 +13,14 @@ use Unitable\Graham\Support\Model;
  */
 class Pix extends Model {
 
+    const PROCESSING = 'PROCESSING';
     const OPEN = 'ATIVA';
     const PAID = 'CONCLUIDA';
     const CANCELED_BY_USER = 'REMOVIDA_PELO_USUARIO_RECEBEDOR';
     const CANCELED_BY_PSP = 'REMOVIDA_PELO_PSP';
 
     const ACTIVE = [
-        'ATIVA'
+        'PROCESSING', 'ATIVA'
     ];
 
     protected $table = 'gerencianet_pix';

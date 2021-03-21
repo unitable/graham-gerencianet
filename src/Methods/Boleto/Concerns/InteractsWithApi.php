@@ -69,7 +69,7 @@ trait InteractsWithApi {
         $boleto = new BoletoEntity($data);
 
         return Boleto::create([
-            'status' => $boleto->status,
+            'status' => Boleto::PROCESSING,
             'gerencianet_boleto_method_id' => $this->id,
             'subscription_invoice_id' => $invoice->id,
             'subscription_id' => $invoice->subscription_id,

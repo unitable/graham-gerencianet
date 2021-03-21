@@ -51,7 +51,7 @@ trait InteractsWithApi {
         ])['qrcode'];
 
         return Pix::create([
-            'status' => $pix['status'],
+            'status' => Pix::PROCESSING,
             'token' => Str::uuid(),
             'subscription_invoice_id' => $invoice->id,
             'subscription_id' => $invoice->subscription_id,

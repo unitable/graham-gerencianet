@@ -13,6 +13,7 @@ use Unitable\Graham\Support\Model;
  */
 class Boleto extends Model {
 
+    const PROCESSING = 'processing';
     const NEW = 'new';
     const WAITING = 'waiting';
     const PAID = 'paid';
@@ -25,7 +26,7 @@ class Boleto extends Model {
     const EXPIRED = 'expired';
 
     const ACTIVE = [
-        'new', 'waiting', 'link'
+        'processing', 'new', 'waiting', 'link'
     ];
 
     protected $table = 'gerencianet_boletos';
