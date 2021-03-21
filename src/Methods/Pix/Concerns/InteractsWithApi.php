@@ -5,7 +5,6 @@ namespace Unitable\GrahamGerencianet\Methods\Pix\Concerns;
 use Gerencianet\Exception\GerencianetException;
 use Illuminate\Support\Str;
 use Unitable\Graham\Subscription\SubscriptionInvoice;
-use Unitable\GrahamGerencianet\Gerencianet;
 use Unitable\GrahamGerencianet\Methods\Pix\Pix;
 
 trait InteractsWithApi {
@@ -13,9 +12,9 @@ trait InteractsWithApi {
     /**
      * Get the api.
      *
-     * @return Gerencianet
+     * @return mixed
      */
-    public function getApi(): Gerencianet {
+    public function getApi() {
         return app()->make('gerencianet')->pix();
     }
 
