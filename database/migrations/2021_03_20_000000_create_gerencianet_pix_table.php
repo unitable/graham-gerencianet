@@ -4,7 +4,7 @@ use Illuminate\Database\Migrations\Migration;
 use Illuminate\Database\Schema\Blueprint;
 use Illuminate\Support\Facades\Schema;
 
-class CreateGerencianetBoletosTable extends Migration {
+class CreateGerencianetPixTable extends Migration {
 
     /**
      * Run the migrations.
@@ -12,19 +12,16 @@ class CreateGerencianetBoletosTable extends Migration {
      * @return void
      */
     public function up() {
-        Schema::create('gerencianet_boletos', function (Blueprint $table) {
+        Schema::create('gerencianet_pix', function (Blueprint $table) {
             $table->id();
             $table->string('status');
-            $table->unsignedBigInteger('gerencianet_boleto_method_id');
+            $table->string('token')->unique();
             $table->unsignedBigInteger('subscription_invoice_id');
             $table->unsignedBigInteger('subscription_id');
             $table->unsignedBigInteger('user_id');
-            $table->unsignedBigInteger('gerencianet_charge_id');
-            $table->string('name');
-            $table->string('cpf', 11);
-            $table->string('phone', 11);
+            $table->string('gerencianet_txid');
             $table->decimal('total', 22, 2);
-            $table->string('gerencianet_boleto_url')->nullable();
+            $table->text('qrcode')->nullable();
             $table->timestamps();
         });
     }

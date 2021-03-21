@@ -2,6 +2,7 @@
 
 use Illuminate\Support\Facades\Route;
 use Unitable\GrahamGerencianet\Http\Controllers;
+use Unitable\GrahamGerencianet\Methods\Pix\Http\Controllers as Pix;
 
 /*
 |--------------------------------------------------------------------------
@@ -14,8 +15,10 @@ use Unitable\GrahamGerencianet\Http\Controllers;
 |
 */
 
-Route::group(['as' => 'graham-gerencianet.', 'prefix' => 'graham-gerencianet/'], function() {
+Route::group(['as' => 'graham-gerencianet.', 'prefix' => 'graham-gerencianet'], function() {
 
-    Route::post('postback', [Controllers\WebhookController::class, 'handleWebhook'])->name('webhook');
+    Route::post('/webhook', [Controllers\WebhookController::class, 'handleWebhook'])->name('webhook');
+
+    Route::post('/pix/webhook', [Pix\WebhookController::class, 'handleWebhook'])->name('pix.webhook');
 
 });

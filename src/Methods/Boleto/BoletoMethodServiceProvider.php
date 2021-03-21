@@ -35,7 +35,6 @@ class BoletoMethodServiceProvider extends ServiceProvider {
      */
     protected function registerEvents() {
         Event::listen(Graham\Events\SubscriptionInvoiceCreated::class, Listeners\StartProcessingInvoice::class);
-        Event::listen(Events\BoletoCreated::class, Listeners\UpdateInvoiceStatus::class);
         Event::listen(Events\BoletoUpdated::class, Listeners\UpdateInvoiceStatus::class);
     }
 

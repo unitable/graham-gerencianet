@@ -16,6 +16,7 @@ class GrahamGerencianetServiceProvider extends ServiceProvider {
             return new Gerencianet([
                 'client_id' => config('graham-gerencianet.client_id'),
                 'client_secret' => config('graham-gerencianet.secret'),
+                'pix_cert' => base_path('/certs/' . config('graham-gerencianet.cert')),
                 'sandbox' => config('graham-gerencianet.sandbox')
             ]);
         });

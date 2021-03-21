@@ -25,13 +25,30 @@ trait InteractsWithApi {
      * @param SubscriptionInvoice $invoice
      * @return Boleto
      * @throws GerencianetException
+     * @noinspection PhpDocRedundantThrowsInspection
      */
     public function newBoleto(SubscriptionInvoice $invoice): Boleto {
-        $charge = $this->getApi()->newCharge($invoice);
-
-        $data = $this->getApi()->payCharge([
-            'id' => $charge->id
+        $item_name = str_replace([
+            '%plan_name%', '%plan_price_name%'
         ], [
+            $invoice->plan->name, $invoice->plan_price->name
+        ], config('graham-gerencianet.invoice_item_name'));
+        $item_value = $invoice->total * 100;
+
+        $webhook_url = config('graham-gerencianet.webhook_url') ??
+            route('graham-gerencianet.webhook');
+
+        $data = $this->getApi()->oneStep([
+            'metadata' => [
+                'notification_url' => $webhook_url
+            ],
+            'items' => [
+                [
+                    'name' => $item_name,
+                    'amount' => 1,
+                    'value' => $item_value
+                ]
+            ],
             'payment' => [
                 'banking_billet' => [
                     'expire_at' => $invoice->due_at->format('Y-m-d') ?? null,

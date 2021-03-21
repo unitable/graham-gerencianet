@@ -15,7 +15,7 @@ use Unitable\GrahamGerencianet\Methods\Boleto\Boleto;
 class WebhookController extends Controller {
 
     /**
-     * Handle a Gerencianet postback call.
+     * Handle a Gerencianet webhook call.
      *
      * @param Request $request
      * @return Response

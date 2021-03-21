@@ -5,6 +5,7 @@ namespace Unitable\GrahamGerencianet\Methods\Pix;
 use Illuminate\Support\Facades\Event;
 use Illuminate\Support\ServiceProvider;
 use Unitable\Graham;
+use Unitable\GrahamGerencianet\Methods\Pix\Observers\PixObserver;
 
 class PixMethodServiceProvider extends ServiceProvider {
 
@@ -23,8 +24,8 @@ class PixMethodServiceProvider extends ServiceProvider {
      * @return void
      */
     public function boot() {
-//        $this->registerEvents();
-//        $this->registerObservers();
+        $this->registerEvents();
+        $this->registerObservers();
     }
 
     /**
@@ -33,9 +34,8 @@ class PixMethodServiceProvider extends ServiceProvider {
      * @return void
      */
     protected function registerEvents() {
-//        Event::listen(Graham\Events\SubscriptionInvoiceCreated::class, Listeners\StartProcessingInvoice::class);
-//        Event::listen(Events\BoletoCreated::class, Listeners\UpdateInvoiceStatus::class);
-//        Event::listen(Events\BoletoUpdated::class, Listeners\UpdateInvoiceStatus::class);
+        Event::listen(Graham\Events\SubscriptionInvoiceCreated::class, Listeners\StartProcessingInvoice::class);
+        Event::listen(Events\PixUpdated::class, Listeners\UpdateInvoiceStatus::class);
     }
 
     /**
@@ -44,7 +44,7 @@ class PixMethodServiceProvider extends ServiceProvider {
      * @return void
      */
     protected function registerObservers() {
-//        Boleto::observe(BoletoObserver::class);
+        Pix::observe(PixObserver::class);
     }
 
 }
