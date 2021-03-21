@@ -5,6 +5,7 @@ namespace Unitable\GrahamGerencianet\Methods\Pix\Http\Controllers;
 use Gerencianet\Exception\GerencianetException;
 use Illuminate\Http\Request;
 use Illuminate\Routing\Controller;
+use Illuminate\Support\Facades\Log;
 use Symfony\Component\HttpFoundation\Response;
 
 class WebhookController extends Controller {
@@ -17,6 +18,8 @@ class WebhookController extends Controller {
      * @throws GerencianetException
      */
     public function handleWebhook(Request $request): Response {
+        Log::info(json_encode($request->all()));
+
         return $this->successMethod();
     }
 

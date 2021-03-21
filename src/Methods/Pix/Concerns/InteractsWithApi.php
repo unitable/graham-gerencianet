@@ -51,7 +51,6 @@ trait InteractsWithApi {
 
         return Pix::create([
             'status' => Pix::PROCESSING,
-            'token' => Str::uuid(),
             'subscription_invoice_id' => $invoice->id,
             'subscription_id' => $invoice->subscription_id,
             'user_id' => $invoice->user_id,

@@ -15,7 +15,6 @@ class CreateGerencianetPixTable extends Migration {
         Schema::create('gerencianet_pix', function (Blueprint $table) {
             $table->id();
             $table->string('status');
-            $table->string('token')->unique();
             $table->unsignedBigInteger('subscription_invoice_id');
             $table->unsignedBigInteger('subscription_id');
             $table->unsignedBigInteger('user_id');
