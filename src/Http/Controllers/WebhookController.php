@@ -9,7 +9,6 @@ use Illuminate\Support\Str;
 use Unitable\GrahamGerencianet\Events\WebhookHandled;
 use Unitable\GrahamGerencianet\Events\WebhookReceived;
 use Symfony\Component\HttpFoundation\Response;
-use Unitable\GrahamGerencianet\Gerencianet;
 use Unitable\GrahamGerencianet\Methods\Boleto\Boleto;
 
 class WebhookController extends Controller {
@@ -47,8 +46,7 @@ class WebhookController extends Controller {
      * @noinspection PhpDocRedundantThrowsInspection
      */
     protected function retrievePayload(Request $request): ?array {
-        /** @var Gerencianet $api */
-        $api = app()->make('gerencianet');
+        $api = app()->make('gerencianet')->default();
 
         $data = $api->getNotification([
             'token' => $request->get('notification')
