@@ -17,6 +17,7 @@
     ],
     "require": {
         "php": "^7.4|^8.0",
+        "gerencianet/gerencianet-sdk-php": "^3.1",
         "illuminate/support": "^8.28",
         "pagarme/pagarme-php": "^4.1",
         "unitable/graham": "dev-master"
@@ -47,7 +48,8 @@
     "extra": {
         "laravel": {
             "providers": [
-                "Unitable\\GrahamGerencianet\\GrahamGerencianetServiceProvider"
+                "Unitable\\GrahamGerencianet\\GrahamGerencianetServiceProvider",
+                "Unitable\\GrahamGerencianet\\Methods\\Boleto\\BoletoMethodServiceProvider"
             ],
             "aliases": {
                 "GrahamGerencianet": "Unitable\\GrahamGerencianet\\GrahamGerencianetFacade"

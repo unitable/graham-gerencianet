@@ -4,57 +4,61 @@ namespace Unitable\GrahamGerencianet;
 
 use Illuminate\Support\ServiceProvider;
 
-class GrahamGerencianetServiceProvider extends ServiceProvider
-{
+class GrahamGerencianetServiceProvider extends ServiceProvider {
+
+    /**
+     * Register the application services.
+     */
+    public function register() {
+        $this->mergeConfigFrom(__DIR__.'/../config/graham-gerencianet.php', 'graham-gerencianet');
+
+        $this->app->singleton('gerencianet', function() {
+            return new Gerencianet([
+                'client_id' => config('graham-gerencianet.client_id'),
+                'client_secret' => config('graham-gerencianet.secret'),
+                'sandbox' => config('graham-gerencianet.sandbox')
+            ]);
+        });
+        $this->app->singleton('graham-gerencianet', function () {
+            return new GrahamGerencianet;
+        });
+    }
+
     /**
      * Bootstrap the application services.
      */
-    public function boot()
-    {
+    public function boot() {
         /*
          * Optional methods to load your package assets
          */
         // $this->loadTranslationsFrom(__DIR__.'/../resources/lang', 'graham-gerencianet');
         // $this->loadViewsFrom(__DIR__.'/../resources/views', 'graham-gerencianet');
-        // $this->loadMigrationsFrom(__DIR__.'/../database/migrations');
-        // $this->loadRoutesFrom(__DIR__.'/routes.php');
+        $this->loadMigrationsFrom(__DIR__ . '/../database/migrations');
+        $this->loadRoutesFrom(__DIR__ . '/../routes/graham-gerencianet.php');
 
         if ($this->app->runningInConsole()) {
             $this->publishes([
-                __DIR__.'/../config/config.php' => config_path('graham-gerencianet.php'),
-            ], 'config');
+                __DIR__.'/../config/graham-gerencianet.php' => config_path('graham-gerencianet.php'),
+            ], 'graham-config');
 
             // Publishing the views.
             /*$this->publishes([
                 __DIR__.'/../resources/views' => resource_path('views/vendor/graham-gerencianet'),
-            ], 'views');*/
+            ], 'graham-views');*/
 
             // Publishing assets.
             /*$this->publishes([
                 __DIR__.'/../resources/assets' => public_path('vendor/graham-gerencianet'),
-            ], 'assets');*/
+            ], 'graham-assets');*/
 
             // Publishing the translation files.
             /*$this->publishes([
                 __DIR__.'/../resources/lang' => resource_path('lang/vendor/graham-gerencianet'),
-            ], 'lang');*/
+            ], 'graham-lang');*/
 
             // Registering package commands.
             // $this->commands([]);
         }
     }
 
-    /**
-     * Register the application services.
-     */
-    public function register()
-    {
-        // Automatically apply the package configuration
-        $this->mergeConfigFrom(__DIR__.'/../config/config.php', 'graham-gerencianet');
-
-        // Register the main class to use with the facade
-        $this->app->singleton('graham-gerencianet', function () {
-            return new GrahamGerencianet;
-        });
-    }
 }
