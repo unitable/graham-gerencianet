@@ -18,15 +18,16 @@ final class BoletoMethod extends GerencianetMethod {
     protected $guarded = [];
 
     /**
-     * Get an invoice payment url.
+     * Get an invoice payment info.
      *
      * @param SubscriptionInvoice $invoice
-     * @return string|null
+     * @return array|null
      */
-    public function getInvoicePaymentUrl(SubscriptionInvoice $invoice): ?string {
-        $boleto = Boleto::findBySubscriptionInvoiceId($invoice->id);
-
-        return $boleto ? $boleto->gerencianet_boleto_url : null;
+    public function getInvoicePaymentInfo(SubscriptionInvoice $invoice): ?array {
+        return ($boleto = Boleto::findBySubscriptionInvoiceId($invoice->id)) ? [
+            'type' => 'url',
+            'url' => $boleto->gerencianet_boleto_url
+        ] : null;
     }
 
     /**

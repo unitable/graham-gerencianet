@@ -13,18 +13,18 @@ final class PixMethod extends GerencianetMethod {
 
     use Concerns\InteractsWithApi;
 
-    public $exists = false;
-
     /**
-     * Get an invoice payment url.
+     * Get an invoice payment info.
      *
      * @param SubscriptionInvoice $invoice
-     * @return string|null
+     * @return array|null
      */
-    public function getInvoicePaymentUrl(SubscriptionInvoice $invoice): ?string {
-        $pix = Pix::findBySubscriptionInvoiceId($invoice->id);
-
-        return $pix ? $pix->gerencianet_pix_url : null;
+    public function getInvoicePaymentInfo(SubscriptionInvoice $invoice): ?array {
+        return ($pix = Pix::findBySubscriptionInvoiceId($invoice->id)) ? [
+            'type' => 'qrcode',
+            'method' => 'pix',
+            'qrcode' => $pix->gerencianet_qrcode
+        ] : null;
     }
 
     /**

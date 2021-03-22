@@ -9,6 +9,7 @@ use Unitable\Graham\Support\Model;
 /**
  * @property string $status
  * @property string $gerencianet_pix_url
+ * @property string $gerencianet_qrcode
  * @property SubscriptionInvoice $invoice
  */
 class Pix extends Model {
@@ -33,7 +34,7 @@ class Pix extends Model {
      * @return static|null
      * @noinspection PhpIncompatibleReturnTypeInspection
      */
-    public static function findByGerencianetTxid(int $txid) {
+    public static function findByGerencianetTxid(string $txid) {
         return static::query()
             ->where('gerencianet_txid', $txid)
             ->first();

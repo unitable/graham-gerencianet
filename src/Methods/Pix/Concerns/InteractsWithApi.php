@@ -60,9 +60,9 @@ trait InteractsWithApi {
             'subscription_invoice_id' => $invoice->id,
             'subscription_id' => $invoice->subscription_id,
             'user_id' => $invoice->user_id,
-            'gerencianet_txid' => $pix['txid'],
             'total' => $invoice->total,
-            'qrcode' => base64_encode($qrcode)
+            'gerencianet_txid' => $pix['txid'],
+            'gerencianet_qrcode' => $qrcode
         ]);
     }
 

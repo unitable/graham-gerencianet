@@ -19,11 +19,11 @@ class CreateGerencianetBoletosTable extends Migration {
             $table->unsignedBigInteger('subscription_invoice_id');
             $table->unsignedBigInteger('subscription_id');
             $table->unsignedBigInteger('user_id');
-            $table->unsignedBigInteger('gerencianet_charge_id');
             $table->string('name');
             $table->string('cpf', 11);
             $table->string('phone', 11);
             $table->decimal('total', 22, 2);
+            $table->unsignedBigInteger('gerencianet_charge_id');
             $table->string('gerencianet_boleto_url')->nullable();
             $table->timestamps();
         });

@@ -18,10 +18,10 @@ class CreateGerencianetPixTable extends Migration {
             $table->unsignedBigInteger('subscription_invoice_id');
             $table->unsignedBigInteger('subscription_id');
             $table->unsignedBigInteger('user_id');
+            $table->decimal('total', 22, 2);
             $table->string('gerencianet_txid');
             $table->string('gerencianet_e2eid')->nullable();
-            $table->decimal('total', 22, 2);
-            $table->text('qrcode')->nullable();
+            $table->text('gerencianet_qrcode')->nullable();
             $table->timestamps();
         });
     }
@@ -32,7 +32,7 @@ class CreateGerencianetPixTable extends Migration {
      * @return void
      */
     public function down() {
-        Schema::dropIfExists('gerencianet_boletos');
+        Schema::dropIfExists('gerencianet_pix');
     }
 
 }
