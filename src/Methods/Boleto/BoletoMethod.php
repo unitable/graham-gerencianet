@@ -26,6 +26,8 @@ final class BoletoMethod extends GerencianetMethod {
     public function getInvoicePaymentInfo(SubscriptionInvoice $invoice): ?array {
         return ($boleto = Boleto::findBySubscriptionInvoiceId($invoice->id)) ? [
             'type' => 'url',
+            'method' => 'gerencianet_boleto',
+            'generic_method' => 'boleto',
             'url' => $boleto->gerencianet_boleto_url
         ] : null;
     }

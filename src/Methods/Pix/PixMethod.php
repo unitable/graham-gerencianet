@@ -22,7 +22,8 @@ final class PixMethod extends GerencianetMethod {
     public function getInvoicePaymentInfo(SubscriptionInvoice $invoice): ?array {
         return ($pix = Pix::findBySubscriptionInvoiceId($invoice->id)) ? [
             'type' => 'qrcode',
-            'method' => 'pix',
+            'method' => 'gerencianet_pix',
+            'generic_method' => 'pix',
             'qrcode' => $pix->gerencianet_qrcode
         ] : null;
     }
