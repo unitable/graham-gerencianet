@@ -19,6 +19,7 @@ class CreateGerencianetPixTable extends Migration {
             $table->unsignedBigInteger('subscription_id');
             $table->unsignedBigInteger('user_id');
             $table->string('gerencianet_txid');
+            $table->string('gerencianet_e2eid')->nullable();
             $table->decimal('total', 22, 2);
             $table->text('qrcode')->nullable();
             $table->timestamps();

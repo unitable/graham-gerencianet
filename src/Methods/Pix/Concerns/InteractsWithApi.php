@@ -3,7 +3,6 @@
 namespace Unitable\GrahamGerencianet\Methods\Pix\Concerns;
 
 use Gerencianet\Exception\GerencianetException;
-use Illuminate\Support\Str;
 use Unitable\Graham\Subscription\SubscriptionInvoice;
 use Unitable\GrahamGerencianet\Methods\Pix\Pix;
 
@@ -57,7 +56,7 @@ trait InteractsWithApi {
         ])['qrcode'];
 
         return Pix::create([
-            'status' => Pix::PROCESSING,
+            'status' => $pix['status'],
             'subscription_invoice_id' => $invoice->id,
             'subscription_id' => $invoice->subscription_id,
             'user_id' => $invoice->user_id,

@@ -2,6 +2,7 @@
 
 namespace Unitable\GrahamGerencianet;
 
+use Gerencianet\ApiRequest;
 use Gerencianet\Gerencianet as Client;
 use Illuminate\Container\Container;
 

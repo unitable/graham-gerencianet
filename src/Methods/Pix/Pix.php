@@ -13,14 +13,13 @@ use Unitable\Graham\Support\Model;
  */
 class Pix extends Model {
 
-    const PROCESSING = 'PROCESSING';
     const OPEN = 'ATIVA';
     const PAID = 'CONCLUIDA';
     const CANCELED_BY_USER = 'REMOVIDA_PELO_USUARIO_RECEBEDOR';
     const CANCELED_BY_PSP = 'REMOVIDA_PELO_PSP';
 
     const ACTIVE = [
-        'PROCESSING', 'ATIVA'
+        'ATIVA'
     ];
 
     protected $table = 'gerencianet_pix';
@@ -28,28 +27,15 @@ class Pix extends Model {
     protected $guarded = [];
 
     /**
-     * Find by Gerencianet charge id.
+     * Find by Gerencianet txid.
      *
-     * @param int $charge_id
+     * @param int $txid
      * @return static|null
      * @noinspection PhpIncompatibleReturnTypeInspection
      */
-    public static function findByGerencianetChargeId(int $charge_id) {
+    public static function findByGerencianetTxid(int $txid) {
         return static::query()
-            ->where('gerencianet_charge_id', $charge_id)
-            ->first();
-    }
-
-    /**
-     * Find by Gerencianet Pix method id.
-     *
-     * @param int $method_id
-     * @return static|null
-     * @noinspection PhpIncompatibleReturnTypeInspection
-     */
-    public static function findByGerencianetPixMethodId(int $method_id) {
-        return static::query()
-            ->where('gerencianet_pix_method_id', $method_id)
+            ->where('gerencianet_txid', $txid)
             ->first();
     }
 

@@ -19,6 +19,6 @@ Route::group(['as' => 'graham-gerencianet.', 'prefix' => 'graham-gerencianet'], 
 
     Route::post('/webhook', [Controllers\WebhookController::class, 'handleWebhook'])->name('webhook');
 
-    Route::post('/pix/webhook', [Pix\WebhookController::class, 'handleWebhook'])->name('pix.webhook');
+    Route::post('/webhook/pix', [Pix\WebhookController::class, 'handleWebhook'])->name('webhook.pix');
 
 });

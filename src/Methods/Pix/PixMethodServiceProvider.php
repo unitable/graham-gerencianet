@@ -35,6 +35,7 @@ class PixMethodServiceProvider extends ServiceProvider {
      */
     protected function registerEvents() {
         Event::listen(Graham\Events\SubscriptionInvoiceCreated::class, Listeners\StartProcessingInvoice::class);
+        Event::listen(Events\PixCreated::class, Listeners\UpdateInvoiceStatus::class);
         Event::listen(Events\PixUpdated::class, Listeners\UpdateInvoiceStatus::class);
     }
 

@@ -21,6 +21,10 @@ class WebhookController extends Controller {
      * @throws GerencianetException
      */
     public function handleWebhook(Request $request): Response {
+        if (!$request->has('notification')) {
+            return $this->missingMethod(); // Pix webhook adapter.
+        }
+
         $payload = $this->retrievePayload($request);
         $method = 'handle' . Str::studly($payload['type'] . '_StatusUpdated');
 

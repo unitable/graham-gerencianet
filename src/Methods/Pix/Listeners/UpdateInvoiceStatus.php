@@ -3,18 +3,19 @@
 namespace Unitable\GrahamGerencianet\Methods\Pix\Listeners;
 
 use Unitable\Graham\Subscription\SubscriptionInvoice;
-use Unitable\GrahamGerencianet\Methods\Pix\Pix;
+use Unitable\GrahamGerencianet\Methods\Pix\Events\PixCreated;
 use Unitable\GrahamGerencianet\Methods\Pix\Events\PixUpdated;
+use Unitable\GrahamGerencianet\Methods\Pix\Pix;
 
 class UpdateInvoiceStatus {
 
     /**
      * Handle the event.
      *
-     * @param PixUpdated $event
+     * @param PixCreated|PixUpdated $event
      * @return void
      */
-    public function handle(PixUpdated $event) {
+    public function handle($event) {
         $pix = $event->pix;
 
         $status = null;
