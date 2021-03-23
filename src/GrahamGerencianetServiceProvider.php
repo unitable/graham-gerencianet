@@ -32,7 +32,7 @@ class GrahamGerencianetServiceProvider extends ServiceProvider {
         /*
          * Optional methods to load your package assets
          */
-         $this->loadTranslationsFrom(__DIR__.'/../resources/lang', 'graham-gerencianet');
+         $this->loadTranslationsFrom(__DIR__ . '/../resources/lang', 'graham-gerencianet');
         // $this->loadViewsFrom(__DIR__.'/../resources/views', 'graham-gerencianet');
         $this->loadMigrationsFrom(__DIR__ . '/../database/migrations');
         $this->loadRoutesFrom(__DIR__ . '/../routes/graham-gerencianet.php');
