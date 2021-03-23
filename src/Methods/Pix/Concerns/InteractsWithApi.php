@@ -44,7 +44,9 @@ trait InteractsWithApi {
             "calendario" => [
                 "expiracao" => $expires_after
             ],
-            "solicitacaoPagador" => $item_name
+            "infoAdicionais" => [
+                [__('graham-gerencianet::pix.plan') => $item_name],
+            ]
         ]);
 
         if (!isset($pix['txid']) || !$pix['txid']) {
