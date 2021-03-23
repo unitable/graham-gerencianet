@@ -36,8 +36,6 @@ trait InteractsWithApi {
             ->addDay()
             ->diffInSeconds(now());
 
-        throw new \Exception(json_encode([__('graham-gerencianet::pix.plan'), trans('graham-gerencianet::pix.plan'), __('pix.plan')]));
-
         $pix = $this->getApi()->pixCreateImmediateCharge([], [
             "chave" => config('graham-gerencianet.pix_key'),
             "valor" => [
