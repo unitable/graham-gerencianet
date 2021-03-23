@@ -45,7 +45,7 @@ trait InteractsWithApi {
                 "expiracao" => $expires_after
             ],
             "infoAdicionais" => [
-                [__('graham-gerencianet::pix.plan') => $item_name],
+                ['nome' => __('graham-gerencianet::pix.plan'), 'valor' => $item_name],
             ]
         ]);
 
