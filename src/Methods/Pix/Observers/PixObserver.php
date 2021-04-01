@@ -30,7 +30,7 @@ class PixObserver {
     public function updated(Pix $pix) {
         PixUpdated::dispatch($pix);
 
-        if ($pix->isDirty('status')) {
+        if ($pix->wasChanged('status')) {
             $this->dispatchStatuses($pix);
         }
     }
