@@ -30,7 +30,7 @@ class BoletoObserver {
     public function updated(Boleto $boleto) {
         BoletoUpdated::dispatch($boleto);
 
-        if ($boleto->wasChanged('status')) {
+        if ($boleto->isDirty('status')) {
             $this->dispatchStatuses($boleto);
         }
     }
