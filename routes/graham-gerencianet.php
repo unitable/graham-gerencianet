@@ -20,8 +20,6 @@ Route::group(['as' => 'graham-gerencianet.', 'prefix' => 'graham-gerencianet'], 
     Route::post('/webhook', [Controllers\WebhookController::class, 'handleWebhook'])->name('webhook');
     Route::post('/webhook/pix', [Pix\WebhookController::class, 'handleWebhook'])->name('webhook.pix');
 
-    Route::group(['middleware' => 'web'], function() {
-        Route::post('/pix/qrcode-api', [Pix\QRCodeAPIController::class, 'handleRequest'])->name('pix.qrcode_api');
-    });
+    Route::post('/pix/qrcode-api', [Pix\QRCodeAPIController::class, 'handleRequest'])->name('pix.qrcode_api');
 
 });
