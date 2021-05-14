@@ -38,12 +38,9 @@ class ProcessInvoice implements ShouldQueue {
      * @throws GerencianetException
      */
     public function handle() {
-        /** @var PixMethod $method */
-        $method = $this->invoice->method; // Do not use SerializesModels for the Pix method.
-
-        if ($this->invoice->status === SubscriptionInvoice::PROCESSING) {
-            $method->newPix($this->invoice);
-        }
+        $this->invoice->update([
+            'status' => SubscriptionInvoice::OPEN
+        ]);
     }
 
 }

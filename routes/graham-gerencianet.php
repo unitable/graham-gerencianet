@@ -18,7 +18,8 @@ use Unitable\GrahamGerencianet\Methods\Pix\Http\Controllers as Pix;
 Route::group(['as' => 'graham-gerencianet.', 'prefix' => 'graham-gerencianet'], function() {
 
     Route::post('/webhook', [Controllers\WebhookController::class, 'handleWebhook'])->name('webhook');
-
     Route::post('/webhook/pix', [Pix\WebhookController::class, 'handleWebhook'])->name('webhook.pix');
+
+    Route::post('/pix/qrcode-api', [Pix\QRCodeAPIController::class, 'handleRequest'])->name('pix.qrcode_api');
 
 });
