@@ -2,6 +2,7 @@
 
 use Illuminate\Support\Facades\Route;
 use Unitable\GrahamGerencianet\Http\Controllers;
+use Unitable\GrahamGerencianet\Methods\Boleto\Http\Controllers as Boleto;
 use Unitable\GrahamGerencianet\Methods\Pix\Http\Controllers as Pix;
 
 /*
@@ -17,9 +18,14 @@ use Unitable\GrahamGerencianet\Methods\Pix\Http\Controllers as Pix;
 
 Route::group(['as' => 'graham-gerencianet.', 'prefix' => 'graham-gerencianet'], function() {
 
+    // Webhook
     Route::post('/webhook', [Controllers\WebhookController::class, 'handleWebhook'])->name('webhook');
-    Route::post('/webhook/pix', [Pix\WebhookController::class, 'handleWebhook'])->name('webhook.pix');
 
+    // Boleto
+    Route::post('/boleto/link-api', [Boleto\LinkAPIController::class, 'handleRequest'])->name('boleto.link_api');
+
+    // Pix
+    Route::post('/webhook/pix', [Pix\WebhookController::class, 'handleWebhook'])->name('pix.webhook');
     Route::post('/pix/qrcode-api', [Pix\QRCodeAPIController::class, 'handleRequest'])->name('pix.qrcode_api');
 
 });

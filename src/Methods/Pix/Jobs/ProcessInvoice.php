@@ -35,7 +35,6 @@ class ProcessInvoice implements ShouldQueue {
      * Execute the job.
      *
      * @return void
-     * @throws GerencianetException
      */
     public function handle() {
         $this->invoice->update([
