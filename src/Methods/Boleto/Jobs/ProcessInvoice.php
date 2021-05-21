@@ -2,16 +2,12 @@
 
 namespace Unitable\GrahamGerencianet\Methods\Boleto\Jobs;
 
-use Illuminate\Bus\Queueable;
-use Illuminate\Contracts\Queue\ShouldQueue;
 use Illuminate\Foundation\Bus\Dispatchable;
-use Illuminate\Queue\InteractsWithQueue;
-use Illuminate\Queue\SerializesModels;
 use Unitable\Graham\Subscription\SubscriptionInvoice;
 
-class ProcessInvoice implements ShouldQueue {
+class ProcessInvoice {
 
-    use Dispatchable, InteractsWithQueue, Queueable, SerializesModels;
+    use Dispatchable;
 
     /**
      * The job invoice.

@@ -2,18 +2,12 @@
 
 namespace Unitable\GrahamGerencianet\Methods\Pix\Jobs;
 
-use Gerencianet\Exception\GerencianetException;
-use Illuminate\Bus\Queueable;
-use Illuminate\Contracts\Queue\ShouldQueue;
 use Illuminate\Foundation\Bus\Dispatchable;
-use Illuminate\Queue\InteractsWithQueue;
-use Illuminate\Queue\SerializesModels;
 use Unitable\Graham\Subscription\SubscriptionInvoice;
-use Unitable\GrahamGerencianet\Methods\Pix\PixMethod;
 
-class ProcessInvoice implements ShouldQueue {
+class ProcessInvoice {
 
-    use Dispatchable, InteractsWithQueue, Queueable, SerializesModels;
+    use Dispatchable;
 
     /**
      * The job invoice.
